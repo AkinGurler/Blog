@@ -51,7 +51,7 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
         title="Paella dish"
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">Akınke</Typography>
+        <Typography variant="h6">Akın</Typography>
         <Typography variant="body2">
           {convertRelativeTime(createdAt)}
         </Typography>
@@ -69,11 +69,12 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
         <Chip label={`# ${tag}`} variant="outlined" className={classes.chip} />
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
-          <Link to={`/posts/${_id}`}>Daha Fazla</Link>
+        <Button size="small" color="primary"> 
+          <Link to={`/posts/${_id}`}>Daha Fazla...</Link>
         </Button>
       </CardActions>
     </Card>
+    
   );
 };
 

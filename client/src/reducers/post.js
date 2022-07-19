@@ -1,7 +1,8 @@
 import * as types from  "../actions/types";
 
 const initialState={
-    posts:[]
+    posts:[],
+    currentPost:null
 
 }
 
@@ -11,13 +12,24 @@ const postReducer=(state=initialState, action)=>{//
         return{
             ...state,
             posts: action.payload
-//sadece değişen kısmı döndürcek
+//only the part of change will be send
+        }
+        case types.FETCH_SINGLE_POST :
+        return{
+            ...state,
+            currentPost:action.payload
         }
         case types.CREATE_POST :
         return{
             ...state,
             posts: [...state.posts,action.payload]
         }
+        case types.DELETE_POST:
+            return{
+                ...state,
+                posts: state.posts.filter((post)=>post._id !== action.payload),
+                currentPost:null,//because of deleted post is current post
+            }
         default:
             return {
                 ...state
