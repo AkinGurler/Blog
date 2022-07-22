@@ -15,7 +15,7 @@ import noImage from "../images/noimage.svg";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 374,
+    maxWidth: 380,
     position: "relative",
   },
   media: {
@@ -70,7 +70,7 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary"> 
-          <Link to={`/posts/${_id}`}>Daha Fazla...</Link>
+          <Link to={`/posts/${_id}`}>More...</Link>
         </Button>
       </CardActions>
     </Card>
