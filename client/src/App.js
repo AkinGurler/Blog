@@ -18,6 +18,7 @@ import AddPostForm from './components/AddPostForm'
 import { useDispatch } from 'react-redux'
 import { fetchPosts } from "./actions/post"
 import PostDetails from './components/PostDetails'
+import { red } from '@material-ui/core/colors'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,7 +59,10 @@ const App = () => {
     <div>
       <CssBaseline />
       <Container maxWidth="lg">{/* //area for posts */}
-        <AppBar position="static" color="inherit" elevation={0}>
+        <AppBar position="static" style={{
+          background:"#252e3e"
+        }} 
+        elevation={0}> {/* static  right left top bottom unaffected */}
           <Toolbar>
             <IconButton edge="start" className={classes.container}
               color="inherit" />
@@ -67,9 +71,9 @@ const App = () => {
               color="secondary"
               className={classes.title}
             >
-              <a href="https://blogcity-frontend.herokuapp.com/posts">Blogcity</a>
+              <a href="http://localhost:3000/posts" style={{color:"#AF9661"}} >Blogcity</a>
             </Typography>
-            <Button color="primary"
+            <Button style={{background:"AF9661"}}
               variant="contained" startIcon={<PenIcon />}
               onClick={handleOpen}>
               New Post
@@ -81,6 +85,7 @@ const App = () => {
           <Grid item xs={12}>
             <Router>
               <Switch>
+                <Route exact path="/" component={PostList} />
                 <Route exact path="/posts" component={PostList} />
                 <Route exact path="/posts/:id" component={PostDetails} />
 

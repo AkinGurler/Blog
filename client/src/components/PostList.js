@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   layoutShifter: {
     float: "right",
     margin: theme.spacing(2),
+    
   },
 }));
 
@@ -28,6 +29,7 @@ const PostsList = () => {
     <>
       {/* Layout Shifter */}
       <div className={classes.layoutShifter}>
+        <h4 style={{textAlign: "center"}}>Layout</h4>
         <Button
           variant="text"
           size="small"
