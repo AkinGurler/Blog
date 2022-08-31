@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Blog-city
+### In this project users can make
+Project not finished yet I will add some properties and authentication operation
+* Create a new post
+* Read a post
+* Update a post
+* Delete a post
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Main-Page](https://user-images.githubusercontent.com/99674716/185784395-6d26c904-4cd2-4867-9194-3e907324a2a3.png)
 
-## Available Scripts
+## Live Demo
+[Demo](https://blogcity-frontend.herokuapp.com/posts)
 
-In the project directory, you can run:
+## API Usage
 
-### `npm start`
+#### API Access Address
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+  https://blogcity-backend.herokuapp.com/
+```
+#### Post Schema
+```
+{
+  title: String,
+  subtitle: String,
+  content: String,
+  tag: String,
+  image: String,
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
+}
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+`No required fields`
+```
 
-### `npm test`
+| Method | Acces Point     | Explanation                |
+| :-------- | :------- | :------------------------- |
+| GET | `/posts` |Returns all the posts in the database as an array. Returns an empty array if there are no texts in the system. |
+ GET | `/posts/:id` | Returns a text object that matches the given `id` value. Returns an error object when there is no match. |
+| POST| `/posts` | Create a new post in the database |
+| PATCH | `posts/:id` | Editing of the posts in the database. |
+| DELETE | `posts/:id` | Deletion of the post in the database. |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation 
 
-### `npm run build`
+* Git clone https://github.com/AkinGurler/Blog.git
+* in project
+```bash 
+  npm install 
+  
+```
+* Use your database or use my API
+* Blog/client/src/api/index.js change api end point
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Used Technologies
+**Front-End:** React, Redux, Material UI,CSS
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Back-End:** NodeJS, ExpressJS,MongoDB
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+[![Front-End](https://skills.thijs.gg/icons?i=react,redux,css,materialui&theme=light)](https://skills.thijs.gg)
+[![Back-End](https://skills.thijs.gg/icons?i=nodejs,expressjs,mongodb&theme=light)](https://skills.thijs.gg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Gainz
+* CRUD Operations
+* Back-end Front-end entegration
+* MongoDB-NodeJs entegration
+* Creating Api
+* Material UI
+* React Forms
+* Upload Project Heroku
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Communication
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![gmail](https://user-images.githubusercontent.com/99674716/185644867-49abb98d-3901-4011-ad5f-0b2d90bf024e.png)](mailto:akingurler.b@gmail.com)
+[![whatsapp](https://user-images.githubusercontent.com/99674716/185643726-5f3fb3f2-bd11-4cd1-baf4-16cd6dae9d3b.png)](http://api.whatsapp.com/send?phone=905534600027)
