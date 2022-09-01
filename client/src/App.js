@@ -44,22 +44,25 @@ const App = () => {
   return (
     <div>
       <CssBaseline />
+      <Router>
       <Container maxWidth="lg">{/* //area for posts */}
+     
         <Navbar  />
-
         <Grid container className={classes.container}>
           <Grid item xs={12}>
-            <Router>
+            
               <Switch>
                 <Route exact path="/" component={PostList} />
                 <Route exact path="/posts" component={PostList} />
                 <Route exact path="/posts/:id" component={PostDetails} />
                 <Route exact path="/auth"  component={Auth} />
               </Switch>
-            </Router>
+            
           </Grid>
         </Grid>
+       
       </Container>
+      </Router>
 
 
     </div>

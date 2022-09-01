@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState} from 'react'
 import { Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import { GoogleLogin } from "react-google-login"
+
+import {GoogleOAuthProvider} from "@react-oauth/google"
+import {GoogleLogin,googleLogout} from "@react-oauth/google"
 import Icon from "./Icon"
 import useStyles from './styles'
 import Input from "./Input"
+import jwt_decode from "jwt-decode"
 import {signin,signup} from "../../actions/auth"
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const initialState={firstName:"",lastName:"",email:"",password:"",confirmPassword:""}
 
@@ -14,17 +19,17 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [isSignup, setisSignup] = useState(false)
   const [formData, setFormData] = useState(initialState)
-  const dispatch=useDispatch();
-  const history=useHistory();
+   const dispatch=useDispatch();
+  const history=useHistory(); 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData);
-    if(isSignUp){
+   /*  console.log(formData);
+    if(isSignup){
       dispatch(signup(formData,history))
     }else{
       dispatch(signin(formData,history))
-    }
+    } */
   }
   const handleChange = (e) => {
     setFormData({...formData,[e.target.name]:e.target.value})
@@ -32,10 +37,31 @@ const Auth = () => {
   }
   const swichtMode = () => {
     setisSignup((prevMode) => !prevMode)
+    setShowPassword(false);
+  } 
+  const createOrGetUser=async (response) =>{
+    const userObject=jwt_decode(response.credential)
+    const name=userObject.name
+    const picture=userObject.picture
+    const sub=userObject.sub
+    const user={
+      _id:sub,
+      _type:"user",
+      userName:name,
+      image:picture
+    }
+    try {
+      dispatch({type:"AUTH",data:userObject})
+      history.push("/")
+
+    } catch (error) {
+      console.log(error);
+    }
+
 
   }
   const googleSuccess = async (res) => {
-    console.log(res)
+    console.log(res,"success")
   }
   const googleFailure = (error) => {
     console.log(error)
@@ -85,22 +111,14 @@ const Auth = () => {
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
+          <GoogleOAuthProvider clientId="742557779874-e548himtc2qsp929hu2ls2llrbe5uep6.apps.googleusercontent.com">
           <GoogleLogin
-            clientId="1050927086971-vl4gjb31ke80ac41l2m0ne67gvt38peq.apps.googleusercontent.com"
-            render={(renderProps) => (/* how button looks like */
-
-              <Button
-                className={classes.googleButton}
-                 color="primary" fullWidth 
-                 onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy="single_host_origin"
-          />
-          <Grid container justify='flex-end'>
+              onSuccess={response=>
+              createOrGetUser(response)}
+              onError={googleFailure} 
+               /> 
+          </GoogleOAuthProvider>
+          <Grid container justifyContent='flex-end'>
             <Grid item>
               <Button onClick={swichtMode}>
                 {isSignup ? "Already have an Acoount? Sign In" : "Don't have a account ? Sign Up"}
