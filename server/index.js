@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv"//for get db url from .env
 import cors from "cors";
 import postRoutes from "./routes/posts.js";
-import userRoutes from "./routes/users.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
 dotenv.config();//loads .env file contents into process.env
@@ -21,7 +21,7 @@ app.get("/", (req, res) => { //main page
     })
 });
 app.use("/posts", postRoutes);
-app.use("/user",userRoutes)
+app.use("/user", userRoutes)
 
 
 //const CONNECTION_URL="mongodb+srv://akin:akin@cluster0.s2ujq.mongodb.net/?retryWrites=true&w=majority"

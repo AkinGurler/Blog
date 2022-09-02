@@ -12,8 +12,7 @@ import {signin,signup} from "../../actions/auth"
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-const initialState={firstName:"",lastName:"",email:"",password:"",confirmPassword:""}
-
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 const Auth = () => {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false)
@@ -21,29 +20,30 @@ const Auth = () => {
   const [formData, setFormData] = useState(initialState)
    const dispatch=useDispatch();
   const history=useHistory(); 
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
-   /*  console.log(formData);
+    console.log(formData);
     if(isSignup){
       dispatch(signup(formData,history))
     }else{
       dispatch(signin(formData,history))
-    } */
+    }
   }
-  const handleChange = (e) => {
-    setFormData({...formData,[e.target.name]:e.target.value})
+  const handleChange = (e) => setFormData({...formData,[e.target.name]:e.target.value})
 
-  }
   const swichtMode = () => {
     setisSignup((prevMode) => !prevMode)
     setShowPassword(false);
   } 
   const createOrGetUser=async (response) =>{
-    const userObject=jwt_decode(response.credential)
+    const userObject=jwt_decode(response.credential) //.credential
+   
     const name=userObject.name
     const picture=userObject.picture
     const sub=userObject.sub
+    const userInfo={result:userObject}
+   
     const user={
       _id:sub,
       _type:"user",
@@ -51,7 +51,7 @@ const Auth = () => {
       image:picture
     }
     try {
-      dispatch({type:"AUTH",data:userObject})
+      dispatch({type:"AUTH",data:userInfo})
       history.push("/")
 
     } catch (error) {

@@ -34,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         width: '400px',
     },
+    toolbar: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        width: '400px',
+      },
 
     title: {
         flexGrow: 1,
@@ -82,23 +87,22 @@ const Navbar = () => {
             
             <AppBar position="static" className={classes.appBar}
                  elevation={0}> {/* static  right left top bottom unaffected */} 
-                 <a href="http://localhost:3000/posts" style={{ color: "#AF9661" }} >Blogcity</a>
-
-                <Toolbar>
+                  <Typography
+                                variant="h4"
+                                color="secondary"
+                                className={classes.title}
+                            >
+                                <a href="http://localhost:3000/posts" style={{ color: "#AF9661" }} >Blogcity</a>
+            </Typography>
+                <Toolbar  className={classes.toolbar}>
                     {user ? (
                         <div className=''>
                             
                             <IconButton edge="start" /* className={classes.container} */
                                 color="inherit" />
-                            <Typography
-                                variant="h4"
-                                color="secondary"
-                                className={classes.title}
-                            >
-                                
-                            </Typography>
-                            <Avatar className='' alt={user.name} src={user.picture} >{user.name} </Avatar>
-                            <Typography className='' variant="h6" >{user.name} </Typography>
+                           
+                            <Avatar className='' alt={user.result.name} src={user.result.picture} >{user.result.name} </Avatar>
+                            <Typography className='' variant="h6" >{user.result.name} </Typography>
                             <Button
                                 compononet={Link} to="/auth"
                                 style={{ background: "AF9661" }}

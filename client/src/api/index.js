@@ -2,7 +2,7 @@ import axios from "axios"
 
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
-
+const apiEndpoint = "http://localhost:5000/posts/";
 
 export const fetchPosts=async () => await API.get("/posts")
 
@@ -17,5 +17,5 @@ export const updatePost = async (id, updatedPost) =>
 export const deletePost=async(id)=>
 await API.delete(`/posts/${id}`)
 
-export const signIn=(formData)=>API.post("/users/signin",formData)
-export const signUp=(formData)=>API.post("/users/signup",formData)
+export const signIn = async(formData) => await API.post('/user/signin', formData);
+export const signUp = async(formData) =>await API.post('/user/signup', formData);
