@@ -2,6 +2,15 @@ import axios from "axios"
 
 const API = axios.create({ baseURL: 'http://localhost:5000' });
 
+/* for send to token backend so backend knows we actually logged in */
+API.interceptors.request.use((req)=>{
+  if(localStorage.getItem("profile")){
+    req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem("profile")).token}`
+  }
+
+  return req;
+})
+
 const apiEndpoint = "http://localhost:5000/posts/";
 
 export const fetchPosts=async () => await API.get("/posts")

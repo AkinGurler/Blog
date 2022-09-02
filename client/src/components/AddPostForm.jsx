@@ -45,10 +45,11 @@ const AddPostForm = ({ open, handleClose }) => {
     const { register, handleSubmit, control, errors, reset } = useForm({
         resolver: yupResolver(postSchema),
     })
+    const user=JSON.parse(localStorage.getItem("profile"))
 
     const onSubmit = (data) => {
 
-        dispatch(createPost({ ...data, image: file }))
+        dispatch(createPost({ ...data, image: file,name:user?.result?.name }))
         clearForm()
     }
     const clearForm = () => {

@@ -33,12 +33,13 @@ const EditPostForm = ({ history, post, closeEditMode }) => {
   const { register, handleSubmit, control, errors, reset } = useForm({
     resolver: yupResolver(postSchema),
   });
-
+  const user=JSON.parse(localStorage.getItem("profile"))
   const onSubmit = (data) => {
     const updatedPost = {
       _id: post._id,
       ...data,
       image: file,
+      name:user?.result?.name
     };
     dispatch(updatePost(post._id, updatedPost));
 
@@ -106,11 +107,12 @@ const EditPostForm = ({ history, post, closeEditMode }) => {
         />
         <FileBase64 multiple={false} onDone={({ base64 }) => setFile(base64)} />
         <div className={classes.buttons}>
+         
           <Button color="primary" variant="outlined" onClick={closeEditMode}>
-            Vazgeç
+            Cancel
           </Button>{" "}
           <Button color="secondary" variant="outlined" type="submit">
-            Kaydet
+            Save
           </Button>
         </div>
       </form>

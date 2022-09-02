@@ -38,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
 const PostDetails = (location) => {
   const dispatch=useDispatch()
   const history = useHistory()
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
   const {id}=useParams()
   const currentPost=useSelector(state => state.posts.currentPost);
+  
 
   const[editMode,setEditMode]=useState(false);
   const openEditMode=()=>{
@@ -77,6 +78,7 @@ const PostDetails = (location) => {
             <Typography variant="h5" gutterBottom>
               {currentPost?.title}
             </Typography>
+            {(user?.result?.sub===currentPost?.creator || user?.result?._id===currentPost?.creator) &&(
             <div>
               <Button
                 color="primary"
@@ -84,7 +86,7 @@ const PostDetails = (location) => {
                 startIcon={<EditIcon />}
                 onClick={openEditMode}
               >
-                Düzenle
+                Edit
               </Button>{" "}
               <Button
                 color="secondary"
@@ -92,9 +94,11 @@ const PostDetails = (location) => {
                 onClick={removePost}
                 startIcon={<DeleteIcon />}
               >
-                Sil
+               Delete
               </Button>
-            </div>
+              </div>
+            )
+            }
           </div>
 
           <Divider />

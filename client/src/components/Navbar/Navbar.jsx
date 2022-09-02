@@ -62,7 +62,7 @@ const Navbar = () => {
 
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")))
-    console.log(user);
+ 
     const dispatch=useDispatch()
     const history=useHistory();
     let location = useLocation();

@@ -23,7 +23,7 @@ const Auth = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formData);
+  
     if(isSignup){
       dispatch(signup(formData,history))
     }else{
@@ -37,12 +37,13 @@ const Auth = () => {
     setShowPassword(false);
   } 
   const createOrGetUser=async (response) =>{
+    
     const userObject=jwt_decode(response.credential) //.credential
    
     const name=userObject.name
     const picture=userObject.picture
     const sub=userObject.sub
-    const userInfo={result:userObject}
+    const userInfo={result:userObject,token:response.credential}
    
     const user={
       _id:sub,
