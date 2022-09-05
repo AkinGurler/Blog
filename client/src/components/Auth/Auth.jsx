@@ -73,9 +73,9 @@ const Auth = () => {
 
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" >
       <Paper className={classes.paper} elevation={3}>
-        <Avatar className='classes.avatar'>
+        <Avatar className='classes.avatar'>s
           <LockOutlinedIcon />
         </Avatar>
         <Typography variant="h5">{isSignup ? "Sign Up" : "Sign In"}</Typography>
@@ -114,6 +114,7 @@ const Auth = () => {
           </Button>
           <GoogleOAuthProvider clientId="742557779874-e548himtc2qsp929hu2ls2llrbe5uep6.apps.googleusercontent.com">
           <GoogleLogin
+              fullWidth
               onSuccess={response=>
               createOrGetUser(response)}
               onError={googleFailure} 
@@ -121,7 +122,9 @@ const Auth = () => {
           </GoogleOAuthProvider>
           <Grid container justifyContent='flex-end'>
             <Grid item>
-              <Button onClick={swichtMode}>
+              <Button 
+              
+              onClick={swichtMode}>
                 {isSignup ? "Already have an Acoount? Sign In" : "Don't have a account ? Sign Up"}
               </Button>
             </Grid>

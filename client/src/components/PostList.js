@@ -37,7 +37,7 @@ const PostsList = () => {
         >
           <img
             src={gridThree}
-            style={{ background: layout === "gridThree" ? "#FFFF00" : "" }}
+            style={{ background: layout === "gridThree" ? "#AF9661" : "" }}
             alt="Three Columns Grid Icon"
           />
         </Button>
@@ -48,7 +48,7 @@ const PostsList = () => {
         >
           <img
             src={gridFour}
-            style={{ background: layout === "gridFour" ? "#FFFF00" : "" }}
+            style={{ background: layout === "gridFour" ? "#AF9661" : "" }}
             alt="Four Columns Grid Icon"
           />
         </Button>

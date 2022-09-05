@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
+const Post = ({ _id, title, subtitle, content, tag, image, createdAt,name }) => {
   const classes = useStyles();
 
   const convertRelativeTime = (date) => {
@@ -51,7 +51,7 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
         title="Paella dish"
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">Akın</Typography>
+        <Typography variant="h6">{name}</Typography>
         <Typography variant="body2">
           {convertRelativeTime(createdAt)}
         </Typography>
@@ -69,7 +69,7 @@ const Post = ({ _id, title, subtitle, content, tag, image, createdAt }) => {
         <Chip label={`# ${tag}`} variant="outlined" className={classes.chip} />
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary"> 
+        <Button size="small" color="primary"  variant="outlined"> 
           <Link to={`/posts/${_id}`}>More...</Link>
         </Button>
       </CardActions>

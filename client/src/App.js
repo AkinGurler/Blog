@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from "@material-ui/core/styles"
 import {
-  CssBaseline,
-  Container,
-  Grid,
+  Container, Grid,
 } from "@material-ui/core"
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import PostList from './components/PostList'
@@ -25,7 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginTop: theme.spacing(6),
-  }
+    
+  },
+
 }))
 
 const App = () => {
@@ -42,26 +42,24 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <CssBaseline />
+    <div >
+
       <Router>
-      <Container maxWidth="lg">{/* //area for posts */}
-     
-        <Navbar  />
-        <Grid container className={classes.container}>
-          <Grid item xs={12}>
-            
+        <Container maxWidth="lg" >{/* //area for posts */}
+          <Navbar />
+          <Grid container className={classes.container}>
+            <Grid item xs={12}>
+
               <Switch>
                 <Route exact path="/" component={PostList} />
                 <Route exact path="/posts" component={PostList} />
                 <Route exact path="/posts/:id" component={PostDetails} />
-                <Route exact path="/auth"  component={Auth} />
+                <Route exact path="/auth" component={Auth} />
               </Switch>
-            
+
+            </Grid>
           </Grid>
-        </Grid>
-       
-      </Container>
+        </Container>
       </Router>
 
 

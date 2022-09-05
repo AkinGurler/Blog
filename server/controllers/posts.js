@@ -12,9 +12,10 @@ export const getPosts = async (req, res) => {
     }
   };
 export const createPost=async(req,res)=>{
+
     const post =req.body
   
-    const newPost= new Post({ ...post, creator: req.userID, createdAt: new Date().toISOString() })
+    const newPost= new Post({ ...post, creator: req.userID , createdAt: new Date().toISOString() })
     
     try{
        await newPost.save()
