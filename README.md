@@ -4,7 +4,8 @@
 * Read a post
 * Update a post
 * Delete a post
-* Sign up - Sign in 
+* Sign up-Sign in 
+* Google Sign in
 
 ![main-page-v2](https://user-images.githubusercontent.com/99674716/189086353-fd0d9e75-fca3-4991-8fd2-672167d40dc8.png)
 
