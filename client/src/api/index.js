@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = axios.create({ baseURL: 'https://blogcitybackend.herokuapp.com' });
 
 /* for send to token backend so backend knows we actually logged in */
 API.interceptors.request.use((req)=>{

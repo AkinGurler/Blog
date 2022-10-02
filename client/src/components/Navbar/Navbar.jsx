@@ -45,10 +45,10 @@ const Navbar = () => {
         const token = user?.token;
         if (token) {
             const decodedToken = decode(token);
-            if (decodedToken.exp * 1000 < new Date().getTime()) logout()
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout() /* if time is over log out */
         }
 
-        setUser(JSON.parse(localStorage.getItem("profile")))
+        setUser(JSON.parse(localStorage.getItem("profile")))  /*setUser null  */
     }, [location])
 
 
@@ -63,12 +63,12 @@ const Navbar = () => {
 
 
                 <Typography
-                    /*  variant="h3" */
+                    
                     color="secondary"
                     className={classes.title}
                     
                 >
-                    <a href="http://localhost:3000/posts"
+                    <a href="https://blogcityfrontend.herokuapp.com/"
                         style={{
                         color: "#AF9661", fontWeight: "600", 
                          fontSize:"39px"
@@ -76,10 +76,12 @@ const Navbar = () => {
                 </Typography>
             </div>
             <Toolbar className={classes.toolbar}>
-                {user ? (
+                {/* If User log in Exist */}
+                {user ?
+                 (
                     <div className={classes.personalInfo}>
 
-                        <IconButton edge="start" /* className={classes.container} */
+                        <IconButton edge="start" 
                             color="inherit" />
 
                         <Avatar  className='' alt={user.result.name} src={user.result.picture} >{user?.result.name.charAt(0)} </Avatar>
@@ -94,7 +96,9 @@ const Navbar = () => {
                         <AddPostForm open={open} handleClose={handleClose} />
                         <Button onClick={logout} variant="contained" color="secondary">Log Out</Button>
                     </div>
-                ) : (
+                ) : 
+                /* ELSE */
+                (
                     <div className="signin-button">
                         <Button href="/auth" variant="contained" color="primary">Sign In</Button>
                     </div>

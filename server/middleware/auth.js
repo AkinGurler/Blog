@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken"
 
 /* wants to like a post
-click the like button => auth middleware (next) => like controllerrr.. */
+click the like button => auth middleware (next) ? like controllerrr.. : stop */
 
 const auth=async(req,res,next) =>{ /* do smt move to the next thing */
     try {
@@ -18,7 +18,7 @@ const auth=async(req,res,next) =>{ /* do smt move to the next thing */
             req.userID=decodedData?.sub;
         }
 
-        next();
+        next();/* go next operation */
         
     } catch (error) {
         console.log(error)

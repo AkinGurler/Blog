@@ -42,6 +42,7 @@ const PostDetails = (location) => {
   const {id}=useParams()
   const currentPost=useSelector(state => state.posts.currentPost);
   
+  
 
   const[editMode,setEditMode]=useState(false);
   const openEditMode=()=>{
@@ -78,7 +79,9 @@ const PostDetails = (location) => {
             <Typography variant="h5" gutterBottom>
               {currentPost?.title}
             </Typography>
-            {(user?.result?.sub===currentPost?.creator || user?.result?._id===currentPost?.creator) &&(
+            {/*  LOGGED USER IS ALSO POST CREATOR USER   */}
+            {(user?.result?.sub===currentPost?.creator || user?.result?._id===currentPost?.creator) &&
+            (
             <div>
               <Button
                 color="primary"
@@ -99,6 +102,7 @@ const PostDetails = (location) => {
               </div>
             )
             }
+      {/*  LOGGED USER IS ALSO POST CREATOR USER END  */}
           </div>
 
           <Divider />
@@ -106,7 +110,7 @@ const PostDetails = (location) => {
             {currentPost?.subtitle}
           </Typography>
           <Typography variant="caption" component="p" gutterBottom>
-            {convertRelativeTime(currentPost?.createdAt)} by Akın
+            {convertRelativeTime(currentPost?.createdAt)} by {currentPost?.name}
           </Typography>
           <Chip
             label={`# ${currentPost?.tag}`}

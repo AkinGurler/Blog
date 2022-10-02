@@ -127,7 +127,7 @@ const AddPostForm = ({ open, handleClose }) => {
                             error={errors.title ? true : false}
                             fullWidth
                         />
-
+                            {/* take file */}
                         <FileBase64 multiple={false}
                             onDone={({ base64 }) => setFile(base64)} />
 
