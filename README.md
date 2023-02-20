@@ -10,14 +10,14 @@
 ![main-page-v2](https://user-images.githubusercontent.com/99674716/189086353-fd0d9e75-fca3-4991-8fd2-672167d40dc8.png)
 
 ## Live Demo
-[Demo](https://blogcityfrontend.herokuapp.com/)
+[Demo](https://blogyfront-end.netlify.app/)
 
 ## API Usage
 
 #### API Access Address
 
 ```
- https://blogcitybackend.herokuapp.com/
+ [https://blogy-server-s45m.onrender.com/]
 ```
 #### Post Schema
 ```
