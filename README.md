@@ -17,7 +17,7 @@
 #### API Access Address
 
 ```
- [https://blogy-server-s45m.onrender.com/]
+ https://blogy-server-s45m.onrender.com/
 ```
 #### Post Schema
 ```
